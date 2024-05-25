@@ -1,5 +1,13 @@
 @php
     $menu_home = true;
+
+    function EchoComment($comment) {
+        echo'<div class="bg-body-tertiary p-3 alert">
+            <h4>'.$comment->name.'<span class="text-body-secondary"> ('.$comment->username.')</span></h4>
+            <div class="py-2">'.$comment->comment.'</div>
+            <div class="py-1">'.$comment->created_at.'</div>
+        </div>';
+}
 @endphp
 @extends('templates.simple-page')
 
@@ -52,10 +60,16 @@
                 </div>
                 <hr class="my-4">
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="same-notify" name="same-notify">
+                    <input type="checkbox" class="form-check-input" id="notify" name="notify" value="1">
                     <label class="form-check-label" for="same-address">Прислать уведомление, когда комментарий одобрят</label>
                 </div>
                 <hr class="my-4">
                 <button class="w-100 btn btn-primary btn-lg" type="submit">Отправить</button>
             </form></div></div>
+    <div class="container p-4 py-3">
+        <h3 class="py-2">Комментарии <span class="text-body-secondary">(одобренные)</span></h3>
+        @foreach($comments as $comment)
+            @php EchoComment($comment); @endphp
+        @endforeach
+    </div>
 @endsection

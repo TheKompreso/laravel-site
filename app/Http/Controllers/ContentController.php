@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CommentModel;
 use Illuminate\Http\Request;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -9,7 +10,9 @@ class ContentController extends Controller
 {
     public function ShowHomePage()
     {
-        return view('home');
+        return view('home', [
+            'comments' => CommentModel::where('public', 1)->orderBy('id', 'desc')->take(5)->get()
+        ]);
     }
     public function ShowFAQPage()
     {
@@ -34,14 +37,32 @@ class ContentController extends Controller
         ]);
     }
 
-    #[NoReturn] public function SendComment(Request $request) : void
+    public function SendComment(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|min:3|max:30',
             'username' => 'required|min:3|max:30',
             'email' => 'nullable|email|min:5|max:100',
-            'comment' => 'required|min:5|max:500'
+            'comment' => 'required|min:5|max:500',
+            'notify' => 'nullable|integer'
             ]);
+
+        $comment = new CommentModel();
+        $comment->name = $request->input('name');
+        $comment->username = $request->input('username');
+        $comment->comment = $request->input('comment');
+
+        $comment->email = $request->input('email');
+        if(is_null($comment->email))
+        {
+            $comment->email = "";
+            $comment->sendmail = 0;
+        }
+        else $comment->sendmail = $request->input('notify');
+
+        $comment->save();
+
+        return redirect()->route('home');
         //dd($request);
     }
 }
