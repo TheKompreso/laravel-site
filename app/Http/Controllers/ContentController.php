@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use JetBrains\PhpStorm\NoReturn;
 
 class ContentController extends Controller
 {
@@ -31,5 +32,16 @@ class ContentController extends Controller
         return view('game', [
             'name_id' => $name_id
         ]);
+    }
+
+    #[NoReturn] public function SendComment(Request $request) : void
+    {
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:30',
+            'username' => 'required|min:3|max:30',
+            'email' => 'nullable|email|min:5|max:100',
+            'comment' => 'required|min:5|max:500'
+            ]);
+        //dd($request);
     }
 }
