@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image_url');
             $table->string('platform');
-            $table->timestamp('release_date');
+            $table->date('release_date');
         });
     }
 
