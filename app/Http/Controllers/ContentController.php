@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CommentModel;
+use App\Models\GameModel;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -23,7 +24,9 @@ class ContentController extends Controller
     }
     public function ShowGamesPage()
     {
-        return view('games');
+        return view('games', [
+            'games' => GameModel::orderBy('id', 'desc')->take(5)->get()
+        ]);
     }
     public function ShowAuthPage()
     {
