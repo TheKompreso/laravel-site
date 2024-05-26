@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\CommentModel;
 use Illuminate\Http\Request;
-use JetBrains\PhpStorm\NoReturn;
 
 class ContentController extends Controller
 {

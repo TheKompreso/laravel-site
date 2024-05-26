@@ -11,6 +11,6 @@ Route::get('/about', [ContentController::class, 'ShowAboutPage']);
 Route::get('/games', [ContentController::class, 'ShowGamesPage']);
 Route::get('/game/{name_id}/{name}', [ContentController::class, 'ShowGamePage']);
 
-Route::get('/user/auth', [ContentController::class, 'ShowAuthPage']);
+Route::get('/user/auth', [ContentController::class, 'ShowAuthPage'])->name('login');
 
 Route::post('/home/send-comment', [ContentController::class, 'SendComment']);
