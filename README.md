@@ -5,6 +5,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+<p align="center">
+Протестировать сайт - <a href="https://gamespotlight.site">gamespotlight.site</a>
+</p>
 ## О текущем проекте
 
 Данный проект был создан в целях обучения Laravel. На данный момент использованы и реализованны следующие вещи:
