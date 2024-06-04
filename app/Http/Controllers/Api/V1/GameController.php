@@ -27,6 +27,7 @@ class GameController extends Controller
      */
     public function show($game_id): \Illuminate\Http\JsonResponse
     {
+        $request;
         if(is_numeric($game_id))
         {
             $game = GameModel::where('id', $game_id)->first();
@@ -35,7 +36,7 @@ class GameController extends Controller
                 return response()->json([
                     'message' => 'error',
                     'search_id' => $game_id,
-                ],404);
+                ],404)->header('Content-Type', 'application/json');
             }
             else
             {
@@ -43,7 +44,7 @@ class GameController extends Controller
                     'message' => 'success',
                     'search_id' => $game_id,
                     'game' => $game,
-                ], 200);
+                ], 200)->header('Content-Type', 'application/json');
             }
         }
         else
@@ -51,7 +52,7 @@ class GameController extends Controller
             return response()->json([
                 'message' => 'error',
                 'search_id' => $game_id,
-            ],400);
+            ],400)->header('Content-Type', 'application/json');
         }
     }
     /**
@@ -77,14 +78,14 @@ class GameController extends Controller
         return response()->json([
             'message' => 'success',
             'game' => $game,
-        ], 201);
+        ], 201)->header('Content-Type', 'application/json');
     }
     /**
      * Показ формы редактирования
      */
     public function edit() : void
     {
-        abort(401);
+        abort(404);
     }
     /**
      * Обновление ресурса
@@ -100,14 +101,14 @@ class GameController extends Controller
         $game = GameModel::where('id', $game_id)->first();
         if($game == null)
         {
-            return response()->json([],404);
+            return response()->json([],404)->header('Content-Type', 'application/json');
         }
         $game->update($validated);
         return response()->json([
             'message' => 'success',
             'game_id' => $game_id,
             'game' => $game,
-        ], 202);
+        ], 202)->header('Content-Type', 'application/json');
     }
 
     /**
@@ -116,9 +117,9 @@ class GameController extends Controller
     public function destroy($game_id): \Illuminate\Http\JsonResponse
     {
         $game = GameModel::where('id', $game_id)->first();
-        if($game == null) return response()->json([],404);
+        if($game == null) return response()->json([],404)->header('Content-Type', 'application/json');
         return response()->json([
             'message' => 'success'
-        ], 200);
+        ], 200)->header('Content-Type', 'application/json');
     }
 }
