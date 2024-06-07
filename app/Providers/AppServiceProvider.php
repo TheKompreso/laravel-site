@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::pattern('id', '[0-9]+');
+        Route::pattern('domain', '[a-z0-9.-]+');
+        Route::pattern('host', '[a-z0-9-]+\.[a-z0-9-]+$');
     }
 }
