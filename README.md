@@ -5,10 +5,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<p align="center">
-Протестировать сайт - <a href="https://gamespotlight.site">gamespotlight.site</a>
-</p>
-
 ## О текущем проекте
 
 Данный проект был создан в целях обучения Laravel. На данный момент использованы и реализованны следующие вещи:
@@ -25,7 +21,6 @@
     <div align="center">
     <img src="https://github.com/TheKompreso/laravel-site/blob/Kompreso/.githubcontent/routes_api.png" alt="API Routes"  wight="750" height="130">
     </div>
-    Пример API-запроса через postman: <a href="https://www.postman.com/cryosat-candidate-11818601/workspace/gamespotlight-site/request/15684640-e56df688-958f-4c0a-af7f-603f23275536">gamespotlight.site/api/v1/game/1</a>
 
 ## Используемые языки и технологии
   <a href="https://laravel.com" target="_blank" rel="noreferrer"><img src="https://cdn.simpleicons.org/laravel" width="48" height="48" alt="laravel" /></a>
